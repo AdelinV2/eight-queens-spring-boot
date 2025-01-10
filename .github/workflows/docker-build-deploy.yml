@@ -19,7 +19,7 @@ jobs:
 
       - name: Build with Maven
         run: |
-          chmod +x mvnw
+          chmod +x ./mvnw
           ./mvnw package
 
       - name: Build Docker image
