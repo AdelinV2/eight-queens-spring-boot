@@ -31,3 +31,8 @@ td.white {
 td.black {
     background-color: #1c1c21 ;
 }
+
+td.queen {
+    font-size: 40px;
+    color: red;
+}
