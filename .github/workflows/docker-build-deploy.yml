@@ -19,8 +19,8 @@ jobs:
 
       - name: Build with Maven
         run: |
-          chmod +x ./eight-queens/eight-queens/mvnw
-          ./eight-queens/eight-queens/mvnw package
+          chmod +x eight-queens/eight-queens/mvnw
+          eight-queens/eight-queens/mvnw package
 
       - name: Build Docker image
         run: |
