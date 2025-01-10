@@ -5,11 +5,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 @Controller
-@RequestMapping("/solution")
 public class SolutionController {
 
     private final SolutionService solutionService;
@@ -19,13 +17,21 @@ public class SolutionController {
         this.solutionService = solutionService;
     }
 
-    @GetMapping
-    public String getSolution(@RequestParam(defaultValue = "0") int index, Model model) {
+    @GetMapping("/")
+    public String index() {
+        return "redirect:/solution?index=0";
+    }
+
+    @GetMapping("/solution")
+    public String solution(@RequestParam int index, Model model) {
+
         if (index < 0 || index >= solutionService.getSolutionCount()) {
-            return "redirect:/solution?index=0";
+            index = 0;
         }
 
-        // TODO add solution to model
+        model.addAttribute("solution", solutionService.getSolutionByIndex(index));
+        model.addAttribute("currentSolution", index);
+        model.addAttribute("solutionCount", solutionService.getSolutionCount());
 
         return "index";
     }
