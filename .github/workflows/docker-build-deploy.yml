@@ -1,0 +1,38 @@
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+
+      - name: Setup Java
+        uses: actions/setup-java@v3
+        with:
+          distribution: 'openjdk'
+          java-version: '23'
+
+      - name: Build with Maven
+        run: |
+          chmod +x mvnw
+          ./mvnw package
+
+      - name: Build Docker image
+        run: |
+          docker build -t eight-queens-app .
+
+      - name: Publish Docker Image
+        uses: docker/login-action@v2
+        with:
+          username: ${{ secrets.DOCKER_USERNAME }}
+          password: ${{ secrets.DOCKER_PASSWORD }}
+
+      - name: Push Docker Image
+        run: |
+          docker tag eight-queens-app ${{ secrets.DOCKER_USERNAME }}/eight-queens-app
+          docker push ${{ secrets.DOCKER_USERNAME }}/eight-queens-app
