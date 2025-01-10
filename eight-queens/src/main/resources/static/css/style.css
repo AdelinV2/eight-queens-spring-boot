@@ -37,3 +37,10 @@ td.queen {
     font-size: 40px;
     color: red;
 }
+
+h1 {
+    font-size: 2.5em;
+    color: #333;
+    text-align: center;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
+}
