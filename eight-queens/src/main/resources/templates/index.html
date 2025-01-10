@@ -5,6 +5,7 @@
     <meta charset="UTF-8">
     <title>Eight Queens</title>
     <link rel="stylesheet" th:href="@{/css/style.css}">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
 </head>
 
 <body>
@@ -23,19 +24,19 @@
         </tbody>
     </table>
 
-    <div style="display: flex; justify-content: space-between; align-items: center;">
+    <div style="display: flex; justify-content: space-between; align-items: center; margin-top: 32px">
         <form th:action="@{/solution}" method="get">
             <input type="hidden" name="index" th:value="${currentSolution - 1}">
-            <button th:disabled="${currentSolution == 0}">Back</button>
+            <button class="btn btn-primary" th:disabled="${currentSolution == 0}">Back</button>
         </form>
         <form th:action="@{/solution}" method="get" style="display: flex; align-items: center;">
-            <input type="number" name="index" th:value="${currentSolution}" min="0" max="91"
+            <input class="form-control mr-2" type="number" name="index" th:value="${currentSolution}" min="0" max="91"
                    placeholder="Specific solution" style="margin-right: 10px;">
-            <button type="submit">Go</button>
+            <button class="btn btn-primary" type="submit">Go</button>
         </form>
         <form th:action="@{/solution}" method="get">
             <input type="hidden" name="index" th:value="${currentSolution + 1}">
-            <button th:disabled="${currentSolution == 91}">Next</button>
+            <button class="btn btn-primary" th:disabled="${currentSolution == 91}">Next</button>
         </form>
     </div>
 </div>
