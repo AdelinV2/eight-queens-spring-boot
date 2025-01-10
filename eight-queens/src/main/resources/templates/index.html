@@ -16,7 +16,8 @@
         <tr th:each="row, rowStat : ${solution.board}">
             <td th:each="cell, cellStat : ${row}"
                 th:text="${cell == 1 ? '♛' : ''}"
-                th:class="${(rowStat.index + cellStat.index) % 2 == 0 ? 'white' : 'black'}">
+                th:class="${(rowStat.index + cellStat.index) % 2 == 0 ? 'white' : 'black'}"
+                th:classappend="${cell == 1 ? ' queen' : ''}">
             </td>
         </tr>
         </tbody>
