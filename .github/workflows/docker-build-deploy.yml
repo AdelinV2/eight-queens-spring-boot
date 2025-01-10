@@ -40,8 +40,12 @@ jobs:
           username: ${{ github.actor }}
           password: ${{ secrets.GITHUB_TOKEN }}
 
-      - name: Push Docker Image
+      - name: Push Docker Image to Docker Hub
         run: |
           docker tag eight-queens-app ${{ secrets.DOCKER_USERNAME }}/eight-queens-app
           docker push ${{ secrets.DOCKER_USERNAME }}/eight-queens-app
+
+      - name: Push Docker Image to GitHub Container Registry
+        run: |
+            docker tag eight-queens-app ghcr.io/$(echo "${{ github.actor }}" | tr '[:upper:]' '[:lower:]')/eight-queens-app
           docker push ghcr.io/$(echo "${{ github.actor }}" | tr '[:upper:]' '[:lower:]')/eight-queens-spring-boot:latest
