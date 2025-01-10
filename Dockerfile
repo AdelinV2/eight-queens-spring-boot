@@ -2,10 +2,10 @@ FROM openjdk:23-jdk-oracle
 
 WORKDIR /app
 
-COPY .mvn/ .mvn
-COPY mvnw .
-COPY pom.xml ./
-COPY src ./src
+COPY eight-queens/.mvn .mvn
+COPY eight-queens/mvnw .
+COPY eight-queens/pom.xml ./
+COPY eight-queens/src ./src
 
 RUN chmod +x mvnw && ./mvnw package
 
