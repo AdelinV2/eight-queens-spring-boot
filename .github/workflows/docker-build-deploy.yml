@@ -44,4 +44,4 @@ jobs:
         run: |
           docker tag eight-queens-app ${{ secrets.DOCKER_USERNAME }}/eight-queens-app
           docker push ${{ secrets.DOCKER_USERNAME }}/eight-queens-app
-          docker push ghcr.io/$(echo "${{ github.actor }}" | tr '[:upper:]' '[:lower:]')/eight-queens-app:latest
+          docker push ghcr.io/$(echo "${{ github.actor }}" | tr '[:upper:]' '[:lower:]')/eight-queens-spring-boot:latest
